@@ -143,8 +143,9 @@ contains some error messages.
 <p>An undefined <code>data</code> produces an empty string.
 </p>
 
-<p>The option <code>format</code> allows to specify a formatter function.
-The default is the standard Lua function <code>tostring</code>.
+<p>The option <code>format</code> allows to specify a formatter function,
+which is a value of the template referred by the key <code>name</code>.
+The default behavior is given by the standard Lua function <code>tostring</code>.
 </p>
 
 <p>When <code>data</code> is a table, the option <code>separator</code>
