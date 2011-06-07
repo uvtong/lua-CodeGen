@@ -223,7 +223,7 @@ end
 function new (env, ...)
     local obj = { env or {}, ... }
     setmetatable(obj, {
-        __tostring = function () return 'CodeGen' end,
+        __tostring = function () return m._NAME end,
         __call  = function (...) return eval(...) end,
         __index = function (t, k)
                       for i = 1, #t do
@@ -243,9 +243,10 @@ setmetatable(m, {
 })
 _G.CodeGen = m
 
+m._NAME = ...
 m._VERSION = "0.2.1"
 m._DESCRIPTION = "lua-CodeGen : a template engine"
-m._COPYRIGHT = "Copyright (c) 2010 Francois Perrad"
+m._COPYRIGHT = "Copyright (c) 2010-2011 Francois Perrad"
 return m
 --
 -- This library is licensed under the terms of the MIT/X11 license,
