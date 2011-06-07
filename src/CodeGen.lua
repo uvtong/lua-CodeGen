@@ -197,14 +197,13 @@ local function eval (self, name)
 
         if template:find "\n" then
             local results = {}
-            for line in template:gmatch "([^\n]*)\n" do
+            for line in template:gmatch "([^\n]*)\n?" do
                 local result = interpolate_line(line)
                 if result == line or not result:match'^%s*$' then
                     results[#results+1] = result
                 end
                 lineno = lineno + 1
             end
-            results[#results+1] = ''
             return tconcat(results, "\n")
         else
             return interpolate_line(template)
