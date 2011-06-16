@@ -1,6 +1,6 @@
 Revision history for lua-CodeGen
 
-0.2.2
+0.2.2  Thu Jun 16 10:30:00 2011
 	- fix interpolate : handles the last line of a template even if no newline
 		(reported by Alejandro Mery)
 
