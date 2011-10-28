@@ -44,11 +44,9 @@ local special = {
 }
 
 local function unescape(str)
-    str = str:gsub([[\(%d+)]], function (s)
-                                      local n = tonumber(s:sub(1, 3))
-                                      return string.char(n % 256) .. s:sub(4)
-                                  end
-    )
+    str = str:gsub([[\(%d%d?%d?)]], function (s)
+                                        return string.char(tonumber(s) % 256)
+                                    end)
     return str:gsub([[\([abfnrtv\"'])]], special)
 end
 
