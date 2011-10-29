@@ -2,13 +2,13 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Module CodeGen.Graph</title>
+  <title>Module CodeGen.lpeg</title>
     <link rel="stylesheet" href="http://www.keplerproject.org/doc.css" type="text/css"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta http-equiv="Author" content="Fran&ccedil;ois Perrad"/>
   <meta http-equiv="Language" content="en"/>
-  <meta http-equiv="Description" content="Module CodeGen.Graph"/>
-  <meta http-equiv="Keywords" content="lua, CodeGen, template, engine, graph, call, tree"/>
+  <meta http-equiv="Description" content="Module CodeGen.lpeg"/>
+  <meta http-equiv="Keywords" content="lua, CodeGen, template, engine, lpeg"/>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
 <div id="main">
 
 <div id="navigation">
-<h1>CodeGen.Graph</h1>
+<h1>CodeGen.lpeg</h1>
   <ul>
     <li><a href="index.html">Home</a>
       <ul>
@@ -47,13 +47,13 @@
         <li><a href="codegen.html#examples">Examples</a></li>
       </ul>
     </li>
-    <li><strong>module <code>C.Graph</code></strong>
+    <li><a href="graph.html">module <code>C.Graph</code></a>
       <ul>
         <li><a href="graph.html#reference">Reference</a></li>
         <li><a href="graph.html#examples">Examples</a></li>
       </ul>
     </li>
-    <li><a href="lpeg.html">module <code>C.lpeg</code></a>
+    <li><strong>module <code>C.lpeg</code></strong>
       <ul>
         <li><a href="lpeg.html#reference">Reference</a></li>
         <li><a href="lpeg.html#examples">Examples</a></li>
@@ -72,38 +72,23 @@
 
 <h2><a name="reference"></a>Reference</h2>
 
-<p>This module produces the call tree between chunks of a template.</p>
-
-<p>It is useful to find orphan chunk.</p>
-
-<h3>Functions</h3>
-
-<h4><code>to_dot( tmpl )</code></h4>
-
-<p>Returns a string in DOT format.</p>
+<p>Just an alternate implementation using
+<a href="http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html">LPeg</a> (instead of pattern matching from
+<a href="http://www.lua.org/manual/5.1/manual.html#5.4.1"><code>string</code></a> library).</p>
 
 <h2><a name="examples"></a>Examples</h2>
 
 <pre class="example">
-$ lua -e "print(require 'CodeGen.Graph'.to_dot(require 'CodeGen.Graph'.template))" > graph.dot
-$ dot -T png -o graph.png graph.dot
-</pre>
+local CodeGen = require 'CodeGen.lpeg'
 
-<pre class="example">
-$ cat graph.dot
-digraph {
-    node [ shape = none ];
-
-    _node;
-    TOP;
-    _edge;
-
-    TOP -> _node;
-    TOP -> _edge;
+tmpl = CodeGen {    -- instanciation
+    tarball = "${name}-${version}.tar.gz",
+    name = 'lua',
 }
+tmpl.version = 5.1
+output = tmpl 'tarball'     -- interpolation
+print(output) --> lua-5.1.tar.gz
 </pre>
-
-<p><img src="graph.png" alt="graph.png"/>graph.png</p>
 
 </div> <!-- id="content" -->
 
