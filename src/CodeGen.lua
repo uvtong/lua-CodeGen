@@ -7,9 +7,9 @@ local setmetatable = setmetatable
 local tonumber = tonumber
 local tostring = tostring
 local type = type
+local char = require 'string'.char
 local tconcat = require 'table'.concat
 local _G = _G
-local string = require 'string'
 
 _ENV = nil
 local m = {}
@@ -45,7 +45,7 @@ local special = {
 
 local function unescape(str)
     str = str:gsub([[\(%d%d?%d?)]], function (s)
-                                        return string.char(tonumber(s) % 256)
+                                        return char(tonumber(s) % 256)
                                     end)
     return str:gsub([[\([abfnrtv\"'])]], special)
 end
