@@ -94,6 +94,7 @@ check: test
 
 test:
 	cd src && prove --exec=$(LUA) ../test/*.t
+	cd src && prove --exec="$(LUA) -l CodeGen.lpeg" ../test/*.t
 
 coverage:
 	rm -f src/luacov.stats.out src/luacov.report.out

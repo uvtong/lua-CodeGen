@@ -10,7 +10,7 @@ end
 
 local m = require 'CodeGen'
 type_ok( m, 'table' )
-is( m, CodeGen )
+is( m, CodeGen.lpeg or CodeGen )
 is( m, package.loaded.CodeGen )
 
 is( m._NAME, 'CodeGen', "_NAME" )

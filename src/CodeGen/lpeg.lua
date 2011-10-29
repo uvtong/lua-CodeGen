@@ -272,7 +272,9 @@ setmetatable(m, {
 _G.CodeGen = _G.CodeGen or {}
 _G.CodeGen.lpeg = m
 
-m._NAME = ...
+_G.package.loaded['CodeGen'] = m
+
+m._NAME = 'CodeGen'
 m._VERSION = "0.2.2"
 m._DESCRIPTION = "lua-CodeGen : a template engine"
 m._COPYRIGHT = "Copyright (c) 2010-2011 Francois Perrad"
