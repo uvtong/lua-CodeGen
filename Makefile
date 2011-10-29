@@ -18,10 +18,12 @@ install:
 	mkdir -p $(LIBDIR)/CodeGen
 	cp src/CodeGen.lua              $(LIBDIR)
 	cp src/CodeGen/Graph.lua        $(LIBDIR)/CodeGen
+	cp src/CodeGen/lpeg.lua         $(LIBDIR)/CodeGen
 
 uninstall:
 	rm -f $(LIBDIR)/CodeGen.lua
 	rm -f $(LIBDIR)/CodeGen/Graph.lua
+	rm -f $(LIBDIR)/CodeGen/lpeg.lua
 
 manifest_pl := \
 use strict; \
