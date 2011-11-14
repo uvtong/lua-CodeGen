@@ -275,7 +275,7 @@ _G.CodeGen.lpeg = m
 _G.package.loaded['CodeGen'] = m
 
 m._NAME = 'CodeGen'
-m._VERSION = "0.2.2"
+m._VERSION = "0.2.3"
 m._DESCRIPTION = "lua-CodeGen : a template engine"
 m._COPYRIGHT = "Copyright (c) 2010-2011 Francois Perrad"
 return m

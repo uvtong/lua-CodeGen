@@ -1,6 +1,6 @@
 Revision history for lua-CodeGen
 
-0.2.3
+0.2.3  Mon Nov 14 19:30:00 2011
 	- add an alternate implementation using LPeg
 
 0.2.2  Thu Jun 16 10:30:00 2011
