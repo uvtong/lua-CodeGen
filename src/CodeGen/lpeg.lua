@@ -16,9 +16,8 @@ _ENV = nil
 local m = {}
 
 local function gsub (s, patt, repl)
-    patt = lpeg.P(patt)
-    patt = lpeg.Cs((patt / repl + 1)^0)
-    return lpeg.match(patt, s)
+    local p = lpeg.Cs((patt / repl + 1)^0)
+    return p:match(s)
 end
 
 local function split (s, sep, func)
