@@ -10,19 +10,37 @@ local type = type
 local char = require 'string'.char
 local tconcat = require 'table'.concat
 local _G = _G
-local lpeg = require 'lpeg'
+local pc = require 'pc'
+local any = pc.any
+local capture = pc.capture
+local choice = pc.choice
+local complement = pc.complement
+local eof = pc.eof
+local except = pc.except
+local grammar = pc.grammar
+local literal = pc.literal
+local many = pc.many
+local optional = pc.optional
+local position = pc.position
+local range = pc.range
+local replace = pc.replace
+local sequence = pc.sequence
+local set = pc.set
+local some = pc.some
+local subst = pc.subst
+local variable = pc.variable
 
 _ENV = nil
 local m = {}
 
 local function gsub (s, patt, repl)
-    local p = lpeg.Cs((patt / repl + 1)^0)
+    local p = subst(many(choice(replace(patt, repl), any())))
     return p:match(s)
 end
 
 local function split (s, sep, func)
-    local elem = lpeg.C((1 - sep)^0) / func
-    local p = elem * (sep * elem)^0
+    local elem = replace(capture(many(except(any(), sep))), func)
+    local p = sequence(elem, many(sequence(sep, elem)))
     p:match(s)
 end
 
@@ -55,9 +73,9 @@ local special = {
     ["'"]  = "'",
 }
 
-local digit = lpeg.R'09'
-local escape_digit = lpeg.P[[\]]*lpeg.C(digit * digit^-2)
-local escape_special = lpeg.P[[\]]*lpeg.C(lpeg.S[[abfnrtv\"']])
+local digit = range'09'
+local escape_digit = sequence(literal[[\]], capture(sequence(digit, optional(digit), optional(digit))))
+local escape_special = sequence(literal[[\]], capture(set[[abfnrtv\"']]))
 
 local function unescape(str)
     str = gsub(str, escape_digit, function (s)
@@ -66,31 +84,31 @@ local function unescape(str)
     return gsub(str, escape_special, special)
 end
 
-local dot = lpeg.P'.'
-local space = lpeg.S" \t"
-local newline = lpeg.P"\n"
-local newline_anywhere = lpeg.P{ newline + 1 * lpeg.V(1) }
-local only_space = space^0 * -1
-local newline_end = newline * -1
-local indent_needed = newline * -newline
+local dot = literal'.'
+local space = set" \t"
+local newline = literal"\n"
+local newline_anywhere = grammar{ choice(newline, sequence(any(), variable(1))) }
+local only_space = sequence(many(space), eof())
+local newline_end = sequence(newline, eof())
+local indent_needed = sequence(newline, complement(newline))
 
-local vname_capture = lpeg.P'${' * lpeg.C(lpeg.R('AZ', 'az', '__') * lpeg.R('09', 'AZ', 'az', '__', '..')^0) * lpeg.Cp()
-local separator_simple_quote_capture = lpeg.P"'" * lpeg.C((lpeg.P(1) - "'")^0) * lpeg.P"'"
-local separator_double_quote_capture = lpeg.P'"' * lpeg.C((lpeg.P(1) - '"')^0) * lpeg.P'"'
-local separator_capture = lpeg.P';' * space^1 * lpeg.P'separator' * space^0 * lpeg.P'=' * space^0 *
-    (separator_simple_quote_capture + separator_double_quote_capture) * space^0 * lpeg.Cp()
-local identifier_capture = lpeg.C(lpeg.R('AZ', 'az', '__') * lpeg.R('09', 'AZ', 'az', '__')^0)
-local format_capture = lpeg.P';' * space^1 * lpeg.P'format' * space^0 * lpeg.P'=' * space^0 *
-    identifier_capture * space^0 * lpeg.Cp()
-local data_end = lpeg.P'}'
-local include_end = lpeg.P'()}'
-local if_capture = lpeg.P'?' * identifier_capture * lpeg.P'()}'
-local if_else_capture = lpeg.P'?' * identifier_capture * lpeg.P'()!' * identifier_capture * lpeg.P'()}'
-local map_capture = lpeg.P'/' * identifier_capture * lpeg.P'()' * lpeg.Cp()
-local map_end = lpeg.P'}'
+local vname_capture = sequence(literal'${', capture(sequence(range('AZ', 'az', '__'), many(range('09', 'AZ', 'az', '__', '..')))), position())
+local separator_simple_quote_capture = sequence(literal"'", capture(many(except(any(), literal"'"))), literal"'")
+local separator_double_quote_capture = sequence(literal'"', capture(many(except(any(), literal'"'))), literal'"')
+local separator_capture = sequence(literal';', some(space), literal'separator', many(space), literal'=', many(space),
+    choice(separator_simple_quote_capture, separator_double_quote_capture), many(space), position())
+local identifier_capture = capture(sequence(range('AZ', 'az', '__'), many(range('09', 'AZ', 'az', '__'))))
+local format_capture = sequence(literal';', some(space), literal'format', many(space), literal'=', many(space),
+    identifier_capture, many(space), position())
+local data_end = literal'}'
+local include_end = literal'()}'
+local if_capture = sequence(literal'?', identifier_capture, literal'()}')
+local if_else_capture = sequence(literal'?', identifier_capture, literal'()!', identifier_capture, literal'()}')
+local map_capture = sequence(literal'/', identifier_capture, literal'()', position())
+local map_end = literal'}'
 
-local subst = lpeg.P'$' * lpeg.P{ '{' * ((1 - lpeg.S'{}') + lpeg.V(1))^0 * '}' }
-local indent_capture = lpeg.C(space^0) * subst * -1
+local subst = sequence(literal'$', grammar{ sequence(literal'{', many(choice(except(any(), set'{}'), variable(1))), literal'}') })
+local indent_capture = sequence(capture(many(space)), subst, eof())
 
 local new
 local function eval (self, name)
