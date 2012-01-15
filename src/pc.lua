@@ -48,7 +48,7 @@ function m.except (p, ...)
     return p
 end
 
-function m.complement (p)
+function m.not_followed_by (p)
     assert(lpeg.type(p) == 'pattern', "pattern expected")
     return -p
 end
@@ -71,7 +71,7 @@ function m.literal (s)
     return lpeg.P(s)
 end
 
-function m.lookahead (p)
+function m.followed_by (p)
     assert(lpeg.type(p) == 'pattern', "pattern expected")
     return #p
 end
