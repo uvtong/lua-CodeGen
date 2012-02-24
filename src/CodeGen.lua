@@ -238,7 +238,6 @@ m.new = new
 setmetatable(m, {
     __call = function (func, ...) return new(...) end
 })
-_G.CodeGen = m
 
 m._NAME = ...
 m._VERSION = "0.2.3"

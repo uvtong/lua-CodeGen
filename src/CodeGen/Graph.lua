@@ -78,7 +78,6 @@ function m:to_dot ()
     return dot
 end
 
-_G.CodeGen.Graph = m
 m._NAME = ...
 return m
 --

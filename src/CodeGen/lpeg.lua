@@ -268,8 +268,6 @@ m.new = new
 setmetatable(m, {
     __call = function (func, ...) return new(...) end
 })
-_G.CodeGen = _G.CodeGen or {}
-_G.CodeGen.lpeg = m
 
 _G.package.loaded['CodeGen'] = m
 

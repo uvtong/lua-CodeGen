@@ -2,7 +2,7 @@
 
 require 'Test.More'
 
-plan(9)
+plan(8)
 
 if not require_ok 'CodeGen' then
     BAIL_OUT "no lib"
@@ -10,7 +10,6 @@ end
 
 local m = require 'CodeGen'
 type_ok( m, 'table' )
-is( m, CodeGen.lpeg or CodeGen )
 is( m, package.loaded.CodeGen )
 
 is( m._NAME, 'CodeGen', "_NAME" )
