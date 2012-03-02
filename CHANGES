@@ -1,5 +1,11 @@
 Revision history for lua-CodeGen
 
+0.3.0
+	work with Lua 5.2.0
+	add LuaDist support
+	INCOMPATIBILITY : now, the use of the following idiom is mandatory
+		local CodeGen = require 'CodeGen'
+
 0.2.3  Mon Nov 14 19:30:00 2011
 	- add an alternate implementation using LPeg
 
