@@ -240,9 +240,9 @@ setmetatable(m, {
 })
 
 m._NAME = ...
-m._VERSION = "0.2.3"
+m._VERSION = "0.3.0"
 m._DESCRIPTION = "lua-CodeGen : a template engine"
-m._COPYRIGHT = "Copyright (c) 2010-2011 Francois Perrad"
+m._COPYRIGHT = "Copyright (c) 2010-2012 Francois Perrad"
 return m
 --
 -- This library is licensed under the terms of the MIT/X11 license,
