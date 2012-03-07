@@ -7,6 +7,7 @@ local setmetatable = setmetatable
 local tonumber = tonumber
 local tostring = tostring
 local type = type
+local unpack = unpack or require'table'.unpack
 local char = require 'string'.char
 local tconcat = require 'table'.concat
 local _G = _G
@@ -240,8 +241,10 @@ local function eval (self, name)
 
     local val = self[name]
     if type(val) == 'string' then
-        return interpolate(self, val, name),
-               (#msg > 0 and tconcat(msg, "\n")) or nil
+        return unpack {
+            interpolate(self, val, name),
+            (#msg > 0 and tconcat(msg, "\n")) or nil,
+        }
     else
         return render(val)
     end
