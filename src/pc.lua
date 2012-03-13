@@ -53,7 +53,7 @@ function m.not_followed_by (p)
     return -p
 end
 
-function m.eof ()
+function m.eos ()
     return lpeg.P(-1)
 end
 

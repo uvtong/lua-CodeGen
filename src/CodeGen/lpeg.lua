@@ -14,7 +14,7 @@ local pc = require 'pc'
 local any = pc.any
 local capture = pc.capture
 local choice = pc.choice
-local eof = pc.eof
+local eos = pc.eos
 local except = pc.except
 local grammar = pc.grammar
 local literal = pc.literal
@@ -88,8 +88,8 @@ local dot = literal'.'
 local space = set" \t"
 local newline = literal"\n"
 local newline_anywhere = grammar{ choice(newline, sequence(any(), variable(1))) }
-local only_space = sequence(many(space), eof())
-local newline_end = sequence(newline, eof())
+local only_space = sequence(many(space), eos())
+local newline_end = sequence(newline, eos())
 local indent_needed = sequence(newline, not_followed_by(newline))
 
 local vname_capture = sequence(literal'${', capture(sequence(range('AZ', 'az', '__'), many(range('09', 'AZ', 'az', '__', '..')))), position())
@@ -108,7 +108,7 @@ local map_capture = sequence(literal'/', identifier_capture, literal'()', positi
 local map_end = literal'}'
 
 local subst = sequence(literal'$', grammar{ sequence(literal'{', many(choice(except(any(), set'{}'), variable(1))), literal'}') })
-local indent_capture = sequence(capture(many(space)), subst, eof())
+local indent_capture = sequence(capture(many(space)), subst, eos())
 
 local new
 local function eval (self, name)
