@@ -2,23 +2,21 @@
 LUA     := lua
 VERSION := $(shell cd src && $(LUA) -e "m = require [[CodeGen]]; print(m._VERSION)")
 TARBALL := lua-codegen-$(VERSION).tar.gz
-ifndef REV
-  REV   := 1
-endif
+REV     := 1
 
 LUAVER  := 5.1
 PREFIX  := /usr/local
 DPREFIX := $(DESTDIR)$(PREFIX)
 LIBDIR  := $(DPREFIX)/share/lua/$(LUAVER)
+INSTALL := install
 
 all: dist.cmake
 	@echo "Nothing to build here, you can just make install"
 
 install:
-	mkdir -p $(LIBDIR)/CodeGen
-	cp src/CodeGen.lua              $(LIBDIR)
-	cp src/CodeGen/Graph.lua        $(LIBDIR)/CodeGen
-	cp src/CodeGen/lpeg.lua         $(LIBDIR)/CodeGen
+	$(INSTALL) -m 644 -D src/CodeGen.lua                    $(LIBDIR)/CodeGen.lua
+	$(INSTALL) -m 644 -D src/CodeGen/Graph.lua              $(LIBDIR)/CodeGen/Graph.lua
+	$(INSTALL) -m 644 -D src/CodeGen/lpeg.lua               $(LIBDIR)/CodeGen/lpeg.lua
 
 uninstall:
 	rm -f $(LIBDIR)/CodeGen.lua
