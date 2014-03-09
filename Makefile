@@ -13,11 +13,13 @@ INSTALL := install
 all: dist.cmake
 	@echo "Nothing to build here, you can just make install"
 
-install: install.common
+install: install.lua
+
+install.lua: install.common
 	$(INSTALL) -m 644 -D src/CodeGen.lua                    $(LIBDIR)/CodeGen.lua
 
 install.lpeg: install.common
-	$(INSTALL) -m 644 -D src/CodeGen/lpeg.lua               $(LIBDIR)/CodeGen.lua
+	$(INSTALL) -m 644 -D src.lpeg/CodeGen.lua               $(LIBDIR)/CodeGen.lua
 
 install.common:
 	$(INSTALL) -m 644 -D src/CodeGen/Graph.lua              $(LIBDIR)/CodeGen/Graph.lua
@@ -99,9 +101,19 @@ install-rock: clean dist rockspec
 
 check: test
 
-test:
+test: test.lua test.lpeg
+
+test.lua:
 	cd src && prove --exec=$(LUA) ../test/*.t
-	cd src && prove --exec="$(LUA) -l CodeGen.lpeg" ../test/*.t
+
+test.lpeg: src.lpeg/CodeGen/Graph.lua
+	cd src.lpeg && prove --exec=$(LUA) ../test/*.t
+
+src.lpeg/CodeGen:
+	mkdir src.lpeg/CodeGen
+
+src.lpeg/CodeGen/Graph.lua: src.lpeg/CodeGen src/CodeGen/Graph.lua
+	cp src/CodeGen/Graph.lua src.lpeg/CodeGen/Graph.lua
 
 coverage:
 	rm -f src/luacov.stats.out src/luacov.report.out
@@ -113,6 +125,7 @@ README.html: README.md
 
 clean:
 	rm -rf doc
+	rm -rf src.lpeg/CodeGen
 	rm -f MANIFEST *.bak src/luacov.*.out *.rockspec README.html
 
 realclean: clean

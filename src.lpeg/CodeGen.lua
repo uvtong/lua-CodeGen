@@ -272,8 +272,6 @@ setmetatable(m, {
     __call = function (func, ...) return new(...) end
 })
 
-_G.package.loaded['CodeGen'] = m
-
 m._NAME = 'CodeGen'
 m._VERSION = "0.3.0"
 m._DESCRIPTION = "lua-CodeGen : a template engine"

@@ -31,7 +31,7 @@ build = {
     modules = {
         ['CodeGen']             = 'src/CodeGen.lua',
         ['CodeGen.Graph']       = 'src/CodeGen/Graph.lua',
-        ['CodeGen.lpeg']        = 'src/CodeGen/lpeg.lua',
+        ['CodeGen.lpeg']        = 'src.lpeg/CodeGen.lua',
     },
     copy_directories = { 'doc', 'test' },
 }
