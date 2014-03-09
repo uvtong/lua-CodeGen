@@ -13,15 +13,18 @@ INSTALL := install
 all: dist.cmake
 	@echo "Nothing to build here, you can just make install"
 
-install:
+install: install.common
 	$(INSTALL) -m 644 -D src/CodeGen.lua                    $(LIBDIR)/CodeGen.lua
+
+install.lpeg: install.common
+	$(INSTALL) -m 644 -D src/CodeGen/lpeg.lua               $(LIBDIR)/CodeGen.lua
+
+install.common:
 	$(INSTALL) -m 644 -D src/CodeGen/Graph.lua              $(LIBDIR)/CodeGen/Graph.lua
-	$(INSTALL) -m 644 -D src/CodeGen/lpeg.lua               $(LIBDIR)/CodeGen/lpeg.lua
 
 uninstall:
 	rm -f $(LIBDIR)/CodeGen.lua
 	rm -f $(LIBDIR)/CodeGen/Graph.lua
-	rm -f $(LIBDIR)/CodeGen/lpeg.lua
 
 manifest_pl := \
 use strict; \
