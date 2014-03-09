@@ -92,7 +92,8 @@ $(TARBALL): MANIFEST
 dist: $(TARBALL)
 
 rockspec: $(TARBALL)
-	perl -e '$(rockspec_pl)' rockspec.in > rockspec/lua-codegen-$(VERSION)-$(REV).rockspec
+	perl -e '$(rockspec_pl)' rockspec.in      > rockspec/lua-codegen-$(VERSION)-$(REV).rockspec
+	perl -e '$(rockspec_pl)' rockspec.lpeg.in > rockspec/lua-codegen-lpeg-$(VERSION)-$(REV).rockspec
 
 install-rock: clean dist rockspec
 	perl -pe 's{http://cloud.github.com/downloads/fperrad/lua-CodeGen/}{};' \

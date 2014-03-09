@@ -1,4 +1,4 @@
-package = 'lua-CodeGen'
+package = 'lua-CodeGen-LPeg'
 version = '@version@-@rev@'
 source = {
     url = 'http://cloud.github.com/downloads/fperrad/lua-CodeGen/lua-codegen-@version@.tar.gz',
@@ -24,11 +24,12 @@ description = {
 }
 dependencies = {
     'lua >= 5.1',
+    'lpeg >= 0.10',
 }
 build = {
     type = 'builtin',
     modules = {
-        ['CodeGen']             = 'src/CodeGen.lua',
+        ['CodeGen']             = 'src.lpeg/CodeGen.lua',
         ['CodeGen.Graph']       = 'src/CodeGen/Graph.lua',
     },
     copy_directories = { 'doc', 'test' },
