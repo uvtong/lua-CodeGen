@@ -63,7 +63,7 @@ local function eval (self, name)
         local lineno = 1
 
         local function add_message (...)
-            msg[#msg+1] = tname .. ':' .. lineno .. ': ' .. tconcat{...}
+            msg[#msg+1] = tname .. ':' .. tostring(lineno) .. ': ' .. tconcat{...}
         end  -- add_message
 
         local function get_value (vname)
