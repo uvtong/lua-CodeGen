@@ -2,6 +2,9 @@
 lua-CodeGen : a template engine
 ===============================
 
+[![Build Status](https://travis-ci.org/fperrad/lua-CodeGen.png)](https://travis-ci.org/fperrad/lua-CodeGen)
+[![Licence](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE)
+
 Introduction
 ------------
 
