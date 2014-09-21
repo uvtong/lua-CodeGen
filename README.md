@@ -3,7 +3,8 @@ lua-CodeGen : a template engine
 ===============================
 
 [![Build Status](https://travis-ci.org/fperrad/lua-CodeGen.png)](https://travis-ci.org/fperrad/lua-CodeGen)
-[![Licence](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE)
+[![Coverage Status](https://coveralls.io/repos/fperrad/lua-CodeGen/badge.png?branch=master)](https://coveralls.io/r/fperrad/lua-CodeGen?branch=master)
+[![Licence](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](COPYRIGHT)
 
 Introduction
 ------------

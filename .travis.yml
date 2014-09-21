@@ -20,12 +20,14 @@ install:
   - make
   - sudo make install
   - cd ..
+  - sudo luarocks install luacov-coveralls
   - sudo luarocks install lua-testmore
   - sudo luarocks install lpeg
 
 # Build and test.
 script:
   - make LUA=lua$LUASUFFIX test
+  - make LUA=lua$LUASUFFIX coveralls
 
 branches:
   only:
