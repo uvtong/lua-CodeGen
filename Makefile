@@ -92,10 +92,9 @@ rockspec: $(TARBALL)
 	perl -e '$(rockspec_pl)' rockspec.in      > rockspec/lua-codegen-$(VERSION)-$(REV).rockspec
 	perl -e '$(rockspec_pl)' rockspec.lpeg.in > rockspec/lua-codegen-lpeg-$(VERSION)-$(REV).rockspec
 
-install-rock: clean dist rockspec
-	perl -pe 's{http://cloud.github.com/downloads/fperrad/lua-CodeGen/}{};' \
-	    rockspec/lua-codegen-$(VERSION)-$(REV).rockspec > lua-codegen-$(VERSION)-$(REV).rockspec
-	luarocks install lua-codegen-$(VERSION)-$(REV).rockspec
+rock:
+	luarocks pack rockspec/lua-codegen-$(VERSION)-$(REV).rockspec
+	luarocks pack rockspec/lua-codegen-lpeg-$(VERSION)-$(REV).rockspec
 
 check: test
 
