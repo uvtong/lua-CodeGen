@@ -40,13 +40,13 @@ the Terence Parr's articles :
 Links
 -----
 
-The homepage is at [http://fperrad.github.com/lua-CodeGen](http://fperrad.github.com/lua-CodeGen),
+The homepage is at [http://fperrad.github.io/lua-CodeGen](http://fperrad.github.io/lua-CodeGen),
 and the sources are hosted at [http://github.com/fperrad/lua-CodeGen](http://github.com/fperrad/lua-CodeGen).
 
 Copyright and License
 ---------------------
 
-Copyright (c) 2010-2012 Francois Perrad
+Copyright (c) 2010-2014 Francois Perrad
 
 This library is licensed under the terms of the MIT/X11 license, like Lua itself.
 
