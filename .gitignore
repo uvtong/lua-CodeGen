@@ -5,5 +5,6 @@
 /*.tar
 /*.bak
 /*.tar.gz
+/*.src.rock
 
 luacov.*
