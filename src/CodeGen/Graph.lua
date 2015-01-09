@@ -5,7 +5,6 @@
 
 local pairs = pairs
 local type = type
-local _G = _G
 local table = require 'table'
 local CodeGen = require 'CodeGen'
 

@@ -10,7 +10,6 @@ local type = type
 local unpack = unpack or require'table'.unpack
 local char = require 'string'.char
 local tconcat = require 'table'.concat
-local _G = _G
 local lpeg = require 'lpeg'
 
 _ENV = nil
