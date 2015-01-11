@@ -6,7 +6,7 @@ require 'Test.More'
 
 plan(10)
 
-tmpl = CodeGen{
+local tmpl = CodeGen{
     outer = [[
 begin
 ${data/inner()}
@@ -45,7 +45,7 @@ end
 ]] , "with array" )
 
 tmpl.inner = 3.14
-res, msg = tmpl 'outer'
+local res, msg = tmpl 'outer'
 is( res, [[
 begin
     ${data/inner()}

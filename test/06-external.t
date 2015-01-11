@@ -6,7 +6,7 @@ require 'Test.More'
 
 plan(1)
 
-tmpl = dofile '../test/tmpl.lua'
+local tmpl = dofile '../test/tmpl.lua'
 tmpl.data = {
     { name = 'key1', value = 1 },
     { name = 'key2', value = 2 },

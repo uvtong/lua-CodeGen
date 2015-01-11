@@ -6,7 +6,7 @@ require 'Test.More'
 
 plan(4)
 
-tmpl = CodeGen{
+local tmpl = CodeGen{
     outer = [[
 begin
     ${data.locale?inner_fr()!inner_en()}

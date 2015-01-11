@@ -109,6 +109,7 @@ test.lpeg: src.lpeg/CodeGen/Graph.lua
 luacheck:
 	luacheck --std=max --no-unused-args src
 	luacheck --std=max --no-unused-args src.lpeg
+	luacheck --std=min --config .test.luacheckrc test/*.t
 
 src.lpeg/CodeGen:
 	mkdir src.lpeg/CodeGen

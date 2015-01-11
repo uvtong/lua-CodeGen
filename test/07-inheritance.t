@@ -6,7 +6,7 @@ require 'Test.More'
 
 plan(2)
 
-tmpl1 = CodeGen {
+local tmpl1 = CodeGen {
     _a = [[ ${a} ${_b()} ]],
     _b = [[ (${b}) ]],
     a = 'print',
@@ -15,7 +15,7 @@ tmpl1 = CodeGen {
 
 is( tmpl1 '_a', ' print  (1)  ' )
 
-tmpl2 = CodeGen({
+local tmpl2 = CodeGen({
     _b = [[ [${c}] ]],
     a = 'call',
 }, tmpl1, { c = 2 })

@@ -6,7 +6,7 @@ require 'Test.More'
 
 plan(21)
 
-tmpl = CodeGen{
+local tmpl = CodeGen{
     code = [[print("${hello}, ${_guy1; format=upper}");]],
     upper = string.upper,
     hello = "Hello",
@@ -14,7 +14,7 @@ tmpl = CodeGen{
 }
 is( tmpl 'code', [[print("Hello, YOU");]], "scalar attributes" )
 tmpl.hello = "Hi"
-res, msg = tmpl 'code'
+local res, msg = tmpl 'code'
 is( res, [[print("Hi, YOU");]] )
 is( msg, nil, "no error" )
 

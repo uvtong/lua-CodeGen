@@ -6,12 +6,12 @@ require 'Test.More'
 
 plan(2)
 
-tmpl = CodeGen {    -- instanciation
+local tmpl = CodeGen {    -- instanciation
     tarball = "${name}-${version}.tar.gz",
     name = 'lua',
 }
 tmpl.version = 5.1
-output = tmpl 'tarball'     -- interpolation
+local output = tmpl 'tarball'     -- interpolation
 is( output, 'lua-5.1.tar.gz', "for the impatient" )
 
 

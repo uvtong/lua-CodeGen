@@ -6,7 +6,7 @@ require 'Test.More'
 
 plan(8)
 
-tmpl = CodeGen()
+local tmpl = CodeGen()
 type_ok( tmpl, 'table', "new CodeGen" )
 tmpl.a = 'some text'
 is( tmpl 'a', 'some text', "eval 'a'" )
