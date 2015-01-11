@@ -21,11 +21,13 @@ install:
   - sudo make install
   - cd ..
   - sudo luarocks install luacov-coveralls
+  - sudo luarocks install luacheck
   - sudo luarocks install lua-testmore
   - sudo luarocks install lpeg
 
 # Build and test.
 script:
+  - make luacheck
   - make LUA=lua$LUASUFFIX test
   - make LUA=lua$LUASUFFIX coveralls
 

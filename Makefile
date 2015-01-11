@@ -106,6 +106,10 @@ test.lua:
 test.lpeg: src.lpeg/CodeGen/Graph.lua
 	cd src.lpeg && prove --exec=$(LUA) ../test/*.t
 
+luacheck:
+	luacheck --std=max --no-unused-args src
+	luacheck --std=max --no-unused-args src.lpeg
+
 src.lpeg/CodeGen:
 	mkdir src.lpeg/CodeGen
 
