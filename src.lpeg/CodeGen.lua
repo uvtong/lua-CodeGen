@@ -162,50 +162,56 @@ local function eval (self, name)
                 if include_end:match(capt, pos) then
                     return apply(self, capt1)
                 end
-                local capt2 = if_capture:match(capt, pos)
-                if capt2 then
-                    if get_value(capt1) then
-                        return apply(self, capt2)
-                    else
-                        return ''
-                    end
-                end
-                local capt2, capt3 = if_else_capture:match(capt, pos)
-                if capt2 and capt3 then
-                    if get_value(capt1) then
-                        return apply(self, capt2)
-                    else
-                        return apply(self, capt3)
-                    end
-                end
-                local capt2, pos = map_capture:match(capt, pos)
-                if capt2 then
-                    local sep, pos_sep = separator_capture:match(capt, pos)
-                    if sep then
-                        sep = unescape(sep)
-                    end
-                    if map_end:match(capt, pos_sep or pos) then
-                        local array = get_value(capt1)
-                        if array == nil then
+                do
+                    local capt2 = if_capture:match(capt, pos)
+                    if capt2 then
+                        if get_value(capt1) then
+                            return apply(self, capt2)
+                        else
                             return ''
                         end
-                        if type(array) ~= 'table' then
-                            add_message(capt1, " is not a table")
-                            return capt
+                    end
+                end
+                do
+                    local capt2, capt3 = if_else_capture:match(capt, pos)
+                    if capt2 and capt3 then
+                        if get_value(capt1) then
+                            return apply(self, capt2)
+                        else
+                            return apply(self, capt3)
                         end
-                        local results = {}
-                        for i = 1, #array do
-                            local item = array[i]
-                            if type(item) ~= 'table' then
-                                item = { it = item }
-                            end
-                            local result = apply(new(item, self), capt2)
-                            results[#results+1] = result
-                            if result == capt then
-                                break
-                            end
+                    end
+                end
+                do
+                    local capt2, pos = map_capture:match(capt, pos)
+                    if capt2 then
+                        local sep, pos_sep = separator_capture:match(capt, pos)
+                        if sep then
+                            sep = unescape(sep)
                         end
-                        return tconcat(results, sep)
+                        if map_end:match(capt, pos_sep or pos) then
+                            local array = get_value(capt1)
+                            if array == nil then
+                                return ''
+                            end
+                            if type(array) ~= 'table' then
+                                add_message(capt1, " is not a table")
+                                return capt
+                            end
+                            local results = {}
+                            for i = 1, #array do
+                                local item = array[i]
+                                if type(item) ~= 'table' then
+                                    item = { it = item }
+                                end
+                                local result = apply(new(item, self), capt2)
+                                results[#results+1] = result
+                                if result == capt then
+                                    break
+                                end
+                            end
+                            return tconcat(results, sep)
+                        end
                     end
                 end
                 add_message(capt, " does not match")
