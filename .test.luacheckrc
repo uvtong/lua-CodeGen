@@ -1,4 +1,5 @@
-globals = {
+codes = true
+read_globals = {
     -- Test.More
     'plan',
     'done_testing',
@@ -27,6 +28,5 @@ globals = {
     'todo_skip',
     'skip_rest',
     'todo',
-    -- CodeGen
-    'CodeGen',
 }
+files['test/06-external.t'].ignore = { '111/CodeGen' }
