@@ -107,8 +107,8 @@ test.lpeg: src.lpeg/CodeGen/Graph.lua
 	cd src.lpeg && prove --exec=$(LUA) ../test/*.t
 
 luacheck:
-	luacheck --std=max --codes src --ignore 212 --ignore 421
-	luacheck --std=max --codes src.lpeg --ignore 212 --ignore 421
+	luacheck --std=max --codes src --ignore 212 --ignore 421 --ignore 432/self
+	luacheck --std=max --codes src.lpeg --ignore 212 --ignore 421 --ignore 432/self
 	luacheck --std=min --config .test.luacheckrc test/*.t
 
 src.lpeg/CodeGen:
