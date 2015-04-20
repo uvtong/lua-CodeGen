@@ -8,7 +8,7 @@ local type = type
 local table = require 'table'
 local CodeGen = require 'CodeGen'
 
-_ENV = nil
+local _ENV = nil
 local m = {}
 
 local template = CodeGen {

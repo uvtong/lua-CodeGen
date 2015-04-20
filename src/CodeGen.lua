@@ -11,7 +11,7 @@ local unpack = unpack or require'table'.unpack
 local char = require 'string'.char
 local tconcat = require 'table'.concat
 
-_ENV = nil
+local _ENV = nil
 local m = {}
 
 local function render (val, sep, formatter)

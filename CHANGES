@@ -1,5 +1,8 @@
 Revision history for lua-CodeGen
 
+0.3.2
+	- shadow _ENV
+
 0.3.1  Sun Nov  2 17:30:00 2014
 	- don't return nil after result, when no error message
 		(avoid problem with file:write)

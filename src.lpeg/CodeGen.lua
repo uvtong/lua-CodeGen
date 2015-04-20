@@ -12,7 +12,7 @@ local char = require 'string'.char
 local tconcat = require 'table'.concat
 local lpeg = require 'lpeg'
 
-_ENV = nil
+local _ENV = nil
 local m = {}
 
 local function gsub (s, patt, repl)
