@@ -1,4 +1,4 @@
-return CodeGen{
+return require'CodeGen'{
     top = [[
 begin
     ${data/inner()}

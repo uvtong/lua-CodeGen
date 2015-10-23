@@ -109,7 +109,7 @@ test.lpeg: src.lpeg/CodeGen/Graph.lua
 luacheck:
 	luacheck --std=max --codes src --ignore 211/_ENV 212 421 432/self
 	luacheck --std=max --codes src.lpeg --ignore 211/_ENV 212 421 432/self
-	luacheck --std=min --config .test.luacheckrc test/*.t
+	luacheck --std=min --config .test.luacheckrc test/*.t test/*.lua
 
 src.lpeg/CodeGen:
 	mkdir src.lpeg/CodeGen
