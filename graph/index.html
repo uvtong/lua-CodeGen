@@ -4,17 +4,17 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="a template engine">
+        
         <meta name="author" content="François Perrad">
         
-        <link rel="shortcut icon" href="./img/favicon.ico">
+        <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>lua-CodeGen</title>
+	<title>CodeGen.Graph - lua-CodeGen</title>
 
-        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link href="./css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
         
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -43,7 +43,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">lua-CodeGen</a>
+            <a class="navbar-brand" href="..">lua-CodeGen</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,31 +53,31 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="..">Home</a>
                     </li>
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="codegen/">CodeGen</a>
+    <a href="../codegen/">CodeGen</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">CodeGen.Graph</a>
 </li>
 
                         
                             
 <li >
-    <a href="graph/">CodeGen.Graph</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="lpeg/">CodeGen.lpeg</a>
+    <a href="../lpeg/">CodeGen.lpeg</a>
 </li>
 
                         
@@ -95,13 +95,13 @@
                     </a>
                 </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../codegen/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="codegen/">
+                        <a rel="prev" href="../lpeg/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -126,86 +126,44 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#overview">Overview</a></li>
+        <li class="main active"><a href="#reference">Reference</a></li>
+        
+            <li><a href="#functions">Functions</a></li>
         
     
-        <li class="main "><a href="#references">References</a></li>
-        
-    
-        <li class="main "><a href="#status">Status</a></li>
-        
-    
-        <li class="main "><a href="#download">Download</a></li>
-        
-    
-        <li class="main "><a href="#installation">Installation</a></li>
-        
-    
-        <li class="main "><a href="#test">Test</a></li>
-        
-    
-        <li class="main "><a href="#copyright-and-license">Copyright and License</a></li>
+        <li class="main "><a href="#examples">Examples</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p><em>Perfection is achieved, not when there is nothing more to add,
-but when there is nothing left to take away.</em></p>
-<p><em>&mdash; Antoine de Saint-Exupéry</em></p>
-<h2 id="overview">Overview</h2>
-<p>lua-CodeGen is a "safe" template engine.</p>
-<p>lua-CodeGen enforces a strict Model-View separation. Only 4 primitives are supplied :</p>
-<ul>
-<li>attribute reference,</li>
-<li>template include,</li>
-<li>conditional include,</li>
-<li>and template application (i.e., <em>map</em> operation).</li>
-</ul>
-<p>lua-CodeGen allows to split template in small chunk,
-and encourages the reuse of them by inheritance.</p>
-<p>Each chunk of template is like a rule of a grammar for an <em>unparser generator</em>.</p>
-<p>lua-CodeGen is not dedicated to HTML, it could generate any kind of textual code.</p>
-<h2 id="references">References</h2>
-<p>The Terence Parr's articles :</p>
-<ul>
-<li><a href="http://www.cs.usfca.edu/~parrt/papers/mvc.templates.pdf">Enforcing Strict Model-View Separation in Template Engines</a></li>
-<li><a href="http://www.cs.usfca.edu/~parrt/papers/ST.pdf">A Functional Language For Generating Structured Text</a></li>
-</ul>
-<p>Note : lua-CodeGen is not a port of Terence Parr's
-<a href="http://www.stringtemplate.org/">StringTemplate</a>.</p>
-<p><a href="http://github.com/weshoke/Lust">Lust</a> is another Lua module based on
-<a href="http://www.stringtemplate.org/">StringTemplate</a>.</p>
-<h2 id="status">Status</h2>
-<p>lua-CodeGen is in beta stage.</p>
-<p>It's developed for Lua 5.1, 5.2 &amp; 5.3.</p>
-<h2 id="download">Download</h2>
-<p>lua-CodeGen source can be downloaded from
-<a href="http://github.com/fperrad/lua-CodeGen/releases/">GitHub</a>.</p>
-<h2 id="installation">Installation</h2>
-<p>Two variants are available, a pure Lua without dependency and a
-<a href="http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html">LPeg</a> based.</p>
-<p>lua-CodeGen is available via LuaRocks:</p>
-<pre><code>luarocks install lua-codegen
-# luarocks install lua-codegen-lpeg
+<h2 id="reference">Reference</h2>
+<p>This module produces the call tree between chunks of a template.</p>
+<p>It is useful to find orphan chunk.</p>
+<h3 id="functions">Functions</h3>
+<h4 id="to_dot-tmpl">to_dot( tmpl )</h4>
+<p>Returns a string in
+<a href="http://graphviz.org/content/dot-language">DOT</a> format.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="text">$ lua -e &quot;print(require 'CodeGen.Graph'.to_dot(require 'CodeGen.Graph'.template))&quot; &gt; graph.dot
+$ dot -T png -o graph.png graph.dot
 </code></pre>
-<p>or manually, with:</p>
-<pre><code>make install.lua
-# make install.lpeg
+
+<pre><code class="text">$ cat graph.dot
+digraph {
+    node [ shape = none ];
+
+    _node;
+    TOP;
+    _edge;
+
+    TOP -&gt; _node;
+    TOP -&gt; _edge;
+}
 </code></pre>
-<h2 id="test">Test</h2>
-<p>The test suite requires the module
-<a href="http://fperrad.github.io/lua-TestMore/">lua-TestMore</a>.</p>
-<pre><code>make test.lua
-# make test.lpeg
-</code></pre>
-<h2 id="copyright-and-license">Copyright and License</h2>
-<p>Copyright © 2010-2014 François Perrad
-<a href="http://www.openhub.net/accounts/4780?ref=Rank"><img alt="OpenHUB" src="http://www.openhub.net/accounts/4780/widgets/account_rank.gif" /></a>
-<a href="http://www.linkedin.com/in/fperrad"><img alt="LinkedIn" src="http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.gif" /></a></p>
-<p>This library is licensed under the terms of the MIT/X11 license,
-like Lua itself.</p></div>
+
+<p><img alt="graph.png" src="../img/graph.png" /></p></div>
             
         </div>
 
@@ -215,12 +173,12 @@ like Lua itself.</p></div>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
 
-        <script src="./js/jquery-1.10.2.min.js"></script>
-        <script src="./js/bootstrap-3.0.3.min.js"></script>
-        <script src="./js/highlight.pack.js"></script>
-        <script>var base_url = '.';</script>
-        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-        <script src="./js/base.js"></script>
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
@@ -249,8 +207,3 @@ like Lua itself.</p></div>
 
     </body>
 </html>
-
-<!--
-MkDocs version : 0.14.0
-Build Date UTC : 2016-08-18 19:51:34.492782
--->
