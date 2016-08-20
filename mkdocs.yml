@@ -1,0 +1,11 @@
+site_name: lua-CodeGen
+site_description: a template engine
+site_author: François Perrad
+repo_url: https://github.com/fperrad/lua-CodeGen
+pages:
+- Home: index.md
+- API:
+  - CodeGen: codegen.md
+  - CodeGen.Graph: graph.md
+  - CodeGen.lpeg: lpeg.md
+theme: mkdocs
