@@ -9,3 +9,4 @@ pages:
   - CodeGen.Graph: graph.md
   - CodeGen.lpeg: lpeg.md
 theme: mkdocs
+copyright: Copyright &copy; 2010-2014 Fran&ccedil;ois Perrad

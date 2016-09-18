@@ -1,7 +1,10 @@
+# CodeGen
 
-## Manual
+---
 
-### For the impatient
+# Manual
+
+## For the impatient
 
 ```lua
 local CodeGen = require 'CodeGen'
@@ -15,7 +18,7 @@ output = tmpl 'tarball'     -- interpolation
 print(output) --> lua-5.1.tar.gz
 ```
 
-### The instanciation
+## The instanciation
 
 The instanciation of a template is done by the call of `CodeGen`
 with optional parameters. This first parameter is a table.
@@ -44,14 +47,14 @@ return CodeGen {
 tmpl = dofile 'tarball.tmpl'
 ```
 
-### Setting data and other alteration
+## Setting data and other alteration
 
 After the instanciation and before the interpolation,
 all member of the template are accessible and modifiable like in a table.
 
 Typically, data from the model are added after the instanciation.
 
-### The interpolation
+## The interpolation
 
 The interpolation is done by calling the template with one string parameter
 which is the keyname of the entry point template.
@@ -59,11 +62,11 @@ which is the keyname of the entry point template.
 The interpolation returns a string as result
 and an optional string which contains some error messages.
 
-### The 4 primitives in template
+## The 4 primitives in template
 
 The `data` could be in the form of `foo.bar.baz`.
 
-#### 1. Attribute reference
+### 1. Attribute reference
 
 The syntax is `${data[; separator='sep'][; format=name]}`.
 
@@ -92,21 +95,21 @@ output = tmpl 'call'
 print(output) --> print(1, 2, 3);
 ```
 
-#### 2. Template include
+### 2. Template include
 
 The syntax is `${name()}` where `name` is the keyname of a chunk template.
 
 If `name` is not the keyname of a valid chunk,
 there are no substitution and an error is reported.
 
-#### 3. Conditional include
+### 3. Conditional include
 
 The _if_ syntax is `${data?name1()}`
 and the _if/else_ syntax is `${data?name1()!name2()}`
 where `name1` and `name2` are the keyname of a chunk template
 and `data` is evaluated as a boolean.
 
-#### 4. Template application
+### 4. Template application
 
 The syntax is `${data/name()[; separator='sep']}`
 where `data` must be a table.
@@ -117,9 +120,9 @@ The template has a direct access in the item,
 and inherits access from the caller.
 If the item is not a table, it is accessible via the key `it`.
 
-## Examples
+# Examples
 
-### 99 Bottles of Beer
+## 99 Bottles of Beer
 
 Yet another generation of the song
 [99 Bottles of Beer](http://99-bottles-of-beer.net/).
@@ -175,7 +178,7 @@ ${it; format=action}, ${it; format=bootle_next} on the wall.
 print(tmpl 'lyrics')            -- let's sing the song
 ```
 
-### Java class
+## Java class
 
 Java getter/setter generation with external template:
 
@@ -252,7 +255,7 @@ public class Person {
 }
 ```
 
-### Rockspec
+## Rockspec
 
 A generic template for rockspec.
 

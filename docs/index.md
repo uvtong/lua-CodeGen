@@ -1,9 +1,17 @@
 
+# lua-CodeGen
+
+---
+
 *Perfection is achieved, not when there is nothing more to add,
 but when there is nothing left to take away.
-<br /> &mdash; Antoine de Saint-Exupéry*
+<br /> &mdash; Antoine de Saint-Exup&eacute;ry*
+
+---
 
 ## Overview
+
+<script type='text/javascript' src='https://www.openhub.net/p/lua-CodeGen/widgets/project_thin_badge?format=js' ></script>
 
 lua-CodeGen is a "safe" template engine.
 
@@ -52,25 +60,31 @@ Two variants are available, a pure Lua without dependency and a
 
 lua-CodeGen is available via LuaRocks:
 
-    luarocks install lua-codegen
-    # luarocks install lua-codegen-lpeg
+```sh
+luarocks install lua-codegen
+# luarocks install lua-codegen-lpeg
+```
 
 or manually, with:
 
-    make install.lua
-    # make install.lpeg
+```sh
+make install.lua
+# make install.lpeg
+```
 
 ## Test
 
 The test suite requires the module
 [lua-TestMore](http://fperrad.github.io/lua-TestMore/).
 
-    make test.lua
-    # make test.lpeg
+```sh
+make test.lua
+# make test.lpeg
+```
 
 ## Copyright and License
 
-Copyright © 2010-2014 François Perrad
+Copyright &copy; 2010-2014 Fran&ccedil;ois Perrad
 [![OpenHUB](http://www.openhub.net/accounts/4780/widgets/account_rank.gif)](http://www.openhub.net/accounts/4780?ref=Rank)
 [![LinkedIn](http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.gif)](http://www.linkedin.com/in/fperrad)
 

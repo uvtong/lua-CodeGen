@@ -1,25 +1,28 @@
+# CodeGen.Graph
 
-## Reference
+---
+
+# Reference
 
 This module produces the call tree between chunks of a template.
 
 It is useful to find orphan chunk.
 
-### Functions
+## Functions
 
-#### to_dot( tmpl )
+### to_dot( tmpl )
 
 Returns a string in
 [DOT](http://graphviz.org/content/dot-language) format.
 
-## Examples
+# Examples
 
-```text
+```sh
 $ lua -e "print(require 'CodeGen.Graph'.to_dot(require 'CodeGen.Graph'.template))" > graph.dot
 $ dot -T png -o graph.png graph.dot
 ```
 
-```text
+```sh
 $ cat graph.dot
 digraph {
     node [ shape = none ];
