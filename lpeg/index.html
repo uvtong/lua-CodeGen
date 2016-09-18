@@ -126,7 +126,10 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#reference">Reference</a></li>
+        <li class="main active"><a href="#codegenlpeg">CodeGen.lpeg</a></li>
+        
+    
+        <li class="main "><a href="#reference">Reference</a></li>
         
     
         <li class="main "><a href="#examples">Examples</a></li>
@@ -136,12 +139,14 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="reference">Reference</h2>
+<h1 id="codegenlpeg">CodeGen.lpeg</h1>
+<hr />
+<h1 id="reference">Reference</h1>
 <p>Just an alternate implementation using
 <a href="http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html">LPeg</a>
 (instead of pattern matching from 
 <a href="http://www.lua.org/manual/5.1/manual.html#5.4.1">string</a> library).</p>
-<h2 id="examples">Examples</h2>
+<h1 id="examples">Examples</h1>
 <pre><code class="lua">local CodeGen = require 'CodeGen.lpeg'
 
 tmpl = CodeGen {    -- instanciation
@@ -157,6 +162,8 @@ print(output) --&gt; lua-5.1.tar.gz
 
         <footer class="col-md-12">
             <hr>
+            
+                <p>Copyright &copy; 2010-2014 Fran&ccedil;ois Perrad</p>
             
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
