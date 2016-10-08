@@ -32,5 +32,5 @@ build = {
         ['CodeGen']             = 'src.lpeg/CodeGen.lua',
         ['CodeGen.Graph']       = 'src/CodeGen/Graph.lua',
     },
-    copy_directories = { 'doc', 'test' },
+    copy_directories = { 'docs', 'test' },
 }
