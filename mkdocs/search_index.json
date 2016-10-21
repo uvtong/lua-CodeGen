@@ -82,8 +82,28 @@
         },
         {
             "location": "/codegen/#the-4-primitives-in-template",
-            "text": "The  data  could be in the form of  foo.bar.baz .  1. Attribute reference  The syntax is  ${data[; separator='sep'][; format=name]} .  An undefined  data  produces an empty string.  The option  format  allows to specify a formatter function,\nwhich is a value of the template referred by the key  name .\nThe default behavior is given by the standard Lua function  tostring .  When  data  is a table, the option  separator  is used\nas parameter of  table.concat(data, sep) .\nThis parameter could be simple quoted or double quoted,\nand it handles escape sequence like Lua.\nThe characters  {  and  }  are forbidden,\nthere must be represented by a decimal escape sequence  \\ddd .  local CodeGen = require 'CodeGen'\n\ntmpl = CodeGen {\n    call = \"${name}(${parameters; separator=', '});\",\n}\ntmpl.name = 'print'\ntmpl.parameters = { 1, 2, 3 }\noutput = tmpl 'call'\nprint(output) --> print(1, 2, 3);  2. Template include  The syntax is  ${name()}  where  name  is the keyname of a chunk template.  If  name  is not the keyname of a valid chunk,\nthere are no substitution and an error is reported.  3. Conditional include  The  if  syntax is  ${data?name1()} \nand the  if/else  syntax is  ${data?name1()!name2()} \nwhere  name1  and  name2  are the keyname of a chunk template\nand  data  is evaluated as a boolean.  4. Template application  The syntax is  ${data/name()[; separator='sep']} \nwhere  data  must be a table.\nThe template  name  is called for each item of the array  data ,\nand the result is concatened with an optional  separator .  The template has a direct access in the item,\nand inherits access from the caller.\nIf the item is not a table, it is accessible via the key  it .",
+            "text": "The  data  could be in the form of  foo.bar.baz .",
             "title": "The 4 primitives in template"
+        },
+        {
+            "location": "/codegen/#1-attribute-reference",
+            "text": "The syntax is  ${data[; separator='sep'][; format=name]} .  An undefined  data  produces an empty string.  The option  format  allows to specify a formatter function,\nwhich is a value of the template referred by the key  name .\nThe default behavior is given by the standard Lua function  tostring .  When  data  is a table, the option  separator  is used\nas parameter of  table.concat(data, sep) .\nThis parameter could be simple quoted or double quoted,\nand it handles escape sequence like Lua.\nThe characters  {  and  }  are forbidden,\nthere must be represented by a decimal escape sequence  \\ddd .  local CodeGen = require 'CodeGen'\n\ntmpl = CodeGen {\n    call = \"${name}(${parameters; separator=', '});\",\n}\ntmpl.name = 'print'\ntmpl.parameters = { 1, 2, 3 }\noutput = tmpl 'call'\nprint(output) --> print(1, 2, 3);",
+            "title": "1. Attribute reference"
+        },
+        {
+            "location": "/codegen/#2-template-include",
+            "text": "The syntax is  ${name()}  where  name  is the keyname of a chunk template.  If  name  is not the keyname of a valid chunk,\nthere are no substitution and an error is reported.",
+            "title": "2. Template include"
+        },
+        {
+            "location": "/codegen/#3-conditional-include",
+            "text": "The  if  syntax is  ${data?name1()} \nand the  if/else  syntax is  ${data?name1()!name2()} \nwhere  name1  and  name2  are the keyname of a chunk template\nand  data  is evaluated as a boolean.",
+            "title": "3. Conditional include"
+        },
+        {
+            "location": "/codegen/#4-template-application",
+            "text": "The syntax is  ${data/name()[; separator='sep']} \nwhere  data  must be a table.\nThe template  name  is called for each item of the array  data ,\nand the result is concatened with an optional  separator .  The template has a direct access in the item,\nand inherits access from the caller.\nIf the item is not a table, it is accessible via the key  it .",
+            "title": "4. Template application"
         },
         {
             "location": "/codegen/#examples",
@@ -122,8 +142,13 @@
         },
         {
             "location": "/graph/#functions",
-            "text": "to_dot( tmpl )  Returns a string in DOT  format.",
+            "text": "",
             "title": "Functions"
+        },
+        {
+            "location": "/graph/#to_dot-tmpl",
+            "text": "Returns a string in DOT  format.",
+            "title": "to_dot( tmpl )"
         },
         {
             "location": "/graph/#examples",
