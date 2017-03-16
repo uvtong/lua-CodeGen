@@ -208,6 +208,9 @@ local function eval (self, name)
                 end
                 lineno = lineno + 1
             end
+            if results[#results] ~= '' and template:sub(-1) == "\n" then        -- Lua 5.3.3 hack
+                results[#results+1] = ''
+            end
             return tconcat(results, "\n")
         else
             return interpolate_line(template)
