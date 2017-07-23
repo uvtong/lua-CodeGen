@@ -9,3 +9,12 @@
 /*.src.rock
 
 luacov.*
+
+/5.*
+/debian/debhelper-build-stamp
+/debian/files
+/debian/lua-codegen*
+/debian/lua_versions
+/debian/tmp
+/debian/trash
+
