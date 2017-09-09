@@ -90,16 +90,13 @@ rock:
 	luarocks pack rockspec/lua-codegen-$(VERSION)-$(REV).rockspec
 	luarocks pack rockspec/lua-codegen-lpeg-$(VERSION)-$(REV).rockspec
 
-debclean:
+deb:
 	echo "lua-codegen ($(shell git describe --dirty)) unstable; urgency=medium" >  debian/changelog
 	echo ""                         >> debian/changelog
 	echo "  * UNRELEASED"           >> debian/changelog
 	echo ""                         >> debian/changelog
 	echo " -- $(shell git config --get user.name) <$(shell git config --get user.email)>  $(shell date -R)" >> debian/changelog
-	fakeroot debian/rules clean
-
-deb: debclean
-	fakeroot debian/rules binary
+	fakeroot debian/rules clean binary
 
 check: test
 
