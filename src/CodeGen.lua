@@ -190,10 +190,7 @@ local function eval (self, name)
             elseif indent then
                 result = result:gsub("\n", "\n" .. indent)
                 result = result:gsub("^" .. indent .. "\n", "\n")
-                repeat
-                    local nb
-                    result, nb = result:gsub("\n" .. indent .. "\n", "\n\n")
-                until nb == 0
+                result = result:gsub("\n" .. indent .. "\n", "\n\n")
                 result = result:gsub("\n" .. indent .. "$", '')
             end
             return result
